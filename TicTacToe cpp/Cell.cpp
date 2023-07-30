@@ -1,5 +1,9 @@
 #include "Cell.h"
 
+Cell::Cell() {
+	sign = ' ';
+}
+
 void Cell::setSign(char _sign) {
 	sign = _sign;
 }

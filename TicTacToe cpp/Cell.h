@@ -1,10 +1,10 @@
 #pragma once
 class Cell
 {
-private:
+protected:
 	char sign;
 public:
-
+	Cell();
 	void setSign(char _sign);
 	char getSign() const;
 };
