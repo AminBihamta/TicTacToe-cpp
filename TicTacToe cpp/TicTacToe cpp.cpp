@@ -65,51 +65,183 @@ int main()
 				cout << "Player one's turn" << endl;
 			else
 				cout << "Player two's turn" << endl;
-
+			L1:
 			cout << "Choose a cell: ";
 			int chosenCell = 0;
 			cin >> chosenCell;
 
 			if (currentPlayer == 1) {
-				if (chosenCell == 1)
-					tempBoard.setSign(0, 0, playerOne_Sign);
-				else if (chosenCell == 2)
-					tempBoard.setSign(0, 1, playerOne_Sign);
-				else if (chosenCell == 3)
-					tempBoard.setSign(0, 2, playerOne_Sign);
-				else if (chosenCell == 4)
-					tempBoard.setSign(1, 0, playerOne_Sign);
-				else if (chosenCell == 5)
-					tempBoard.setSign(1, 1, playerOne_Sign);
-				else if (chosenCell == 6)
-					tempBoard.setSign(1, 2, playerOne_Sign);
-				else if (chosenCell == 7)
-					tempBoard.setSign(2, 0, playerOne_Sign);
-				else if (chosenCell == 8)
-					tempBoard.setSign(2, 1, playerOne_Sign);
-				else if (chosenCell == 9)
-					tempBoard.setSign(2, 2, playerOne_Sign);
+
+				switch (chosenCell) {
+				case 1:
+					if (tempBoard.getSign(0, 0) != 'X' && tempBoard.getSign(0, 0) != 'O') {
+						tempBoard.setSign(0, 0, playerOne_Sign);
+					}
+					else {
+						cout << endl << "Cell already occupied. ";
+						goto L1;
+					}
+					break;
+				case 2:
+					if (tempBoard.getSign(0, 1) != 'X' && tempBoard.getSign(0, 1) != 'O') {
+						tempBoard.setSign(0, 1, playerOne_Sign);
+					}
+					else {
+						cout << endl << "Cell already occupied. ";
+						goto L1;
+					}
+					break;
+				case 3:
+					if (tempBoard.getSign(0, 2) != 'X' && tempBoard.getSign(0, 2) != 'O') {
+						tempBoard.setSign(0, 2, playerOne_Sign);
+					}
+					else {
+						cout << endl << "Cell already occupied. ";
+						goto L1;
+					}
+					break;
+				case 4:
+					if (tempBoard.getSign(1, 0) != 'X' && tempBoard.getSign(1, 0) != 'O') {
+						tempBoard.setSign(1, 0, playerOne_Sign);
+					}
+					else {
+						cout << endl << "Cell already occupied. ";
+						goto L1;
+					}
+					break;
+				case 5:
+					if (tempBoard.getSign(1, 1) != 'X' && tempBoard.getSign(1, 1) != 'O') {
+						tempBoard.setSign(1, 1, playerOne_Sign);
+					}
+					else {
+						cout << endl << "Cell already occupied. ";
+						goto L1;
+					}
+					break;
+				case 6:
+					if (tempBoard.getSign(1, 2) != 'X' && tempBoard.getSign(1, 2) != 'O') {
+						tempBoard.setSign(1, 2, playerOne_Sign);
+					}
+					else {
+						cout << endl << "Cell already occupied. ";
+						goto L1;
+					}
+					break;
+				case 7:
+					if (tempBoard.getSign(2, 0) != 'X' && tempBoard.getSign(2, 0) != 'O') {
+						tempBoard.setSign(2, 0, playerOne_Sign);
+					}
+					else {
+						cout << endl << "Cell already occupied. ";
+						goto L1;
+					}
+					break;
+				case 8:
+					if (tempBoard.getSign(2, 1) != 'X' && tempBoard.getSign(2, 1) != 'O') {
+						tempBoard.setSign(2, 1, playerOne_Sign);
+					}
+					else {
+						cout << endl << "Cell already occupied. ";
+						goto L1;
+					}
+					break;
+				case 9:
+					if (tempBoard.getSign(2, 2) != 'X' && tempBoard.getSign(2, 2) != 'O') {
+						tempBoard.setSign(2, 2, playerOne_Sign);
+					}
+					else {
+						cout << endl << "Cell already occupied. ";
+						goto L1;
+					}
+					break;
+				}
 				currentPlayer = 2;
 			}
 			else {
-				if (chosenCell == 1)
-					tempBoard.setSign(0, 0, playerTwo_Sign);
-				else if (chosenCell == 2)
-					tempBoard.setSign(0, 1, playerTwo_Sign);
-				else if (chosenCell == 3)
-					tempBoard.setSign(0, 2, playerTwo_Sign);
-				else if (chosenCell == 4)
-					tempBoard.setSign(1, 0, playerTwo_Sign);
-				else if (chosenCell == 5)
-					tempBoard.setSign(1, 1, playerTwo_Sign);
-				else if (chosenCell == 6)
-					tempBoard.setSign(1, 2, playerTwo_Sign);
-				else if (chosenCell == 7)
-					tempBoard.setSign(2, 0, playerTwo_Sign);
-				else if (chosenCell == 8)
-					tempBoard.setSign(2, 1, playerTwo_Sign);
-				else if (chosenCell == 9)
-					tempBoard.setSign(2, 2, playerTwo_Sign);
+				switch (chosenCell) {
+				case 1:
+					if (tempBoard.getSign(0, 0) != 'X' && tempBoard.getSign(0, 0) != 'O') {
+						tempBoard.setSign(0, 0, playerTwo_Sign);
+					}
+					else {
+						cout << endl << "Cell already occupied. ";
+						goto L1;
+					}
+					break;
+				case 2:
+					if (tempBoard.getSign(0, 1) != 'X' && tempBoard.getSign(0, 1) != 'O') {
+						tempBoard.setSign(0, 1, playerTwo_Sign);
+					}
+					else {
+						cout << endl << "Cell already occupied. ";
+						goto L1;
+					}
+					break;
+				case 3:
+					if (tempBoard.getSign(0, 2) != 'X' && tempBoard.getSign(0, 2) != 'O') {
+						tempBoard.setSign(0, 2, playerTwo_Sign);
+					}
+					else {
+						cout << endl << "Cell already occupied. ";
+						goto L1;
+					}
+					break;
+				case 4:
+					if (tempBoard.getSign(1, 0) != 'X' && tempBoard.getSign(1, 0) != 'O') {
+						tempBoard.setSign(1, 0, playerTwo_Sign);
+					}
+					else {
+						cout << endl << "Cell already occupied. ";
+						goto L1;
+					}
+					break;
+				case 5:
+					if (tempBoard.getSign(1, 1) != 'X' && tempBoard.getSign(1, 1) != 'O') {
+						tempBoard.setSign(1, 1, playerTwo_Sign);
+					}
+					else {
+						cout << endl << "Cell already occupied. ";
+						goto L1;
+					}
+					break;
+				case 6:
+					if (tempBoard.getSign(1, 2) != 'X' && tempBoard.getSign(1, 2) != 'O') {
+						tempBoard.setSign(1, 2, playerTwo_Sign);
+					}
+					else {
+						cout << endl << "Cell already occupied. ";
+						goto L1;
+					}
+					break;
+				case 7:
+					if (tempBoard.getSign(2, 0) != 'X' && tempBoard.getSign(2, 0) != 'O') {
+						tempBoard.setSign(2, 0, playerTwo_Sign);
+					}
+					else {
+						cout << endl << "Cell already occupied. ";
+						goto L1;
+					}
+					break;
+				case 8:
+					if (tempBoard.getSign(2, 1) != 'X' && tempBoard.getSign(2, 1) != 'O') {
+						tempBoard.setSign(2, 1, playerTwo_Sign);
+					}
+					else {
+						cout << endl << "Cell already occupied. ";
+						goto L1;
+					}
+					break;
+				case 9:
+					if (tempBoard.getSign(2, 2) != 'X' && tempBoard.getSign(2, 2) != 'O') {
+						tempBoard.setSign(2, 2, playerTwo_Sign);
+					}
+					else {
+						cout << endl << "Cell already occupied. ";
+						goto L1;
+					}
+					break;
+				}
+
 				currentPlayer = 1;
 
 			}
