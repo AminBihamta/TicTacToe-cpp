@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "Cell.h"
 #include "Board.h"
 using namespace std;
@@ -107,6 +108,7 @@ int main()
 			L1:
 			cout << "Choose a cell: ";
 			int chosenCell = 0;
+			// TODO: Wrong Input Handling
 			cin >> chosenCell;
 
 			if (tempBoard.getSign(chosenCell - 1) != 'X' && tempBoard.getSign(chosenCell - 1) != 'O') {
@@ -136,10 +138,10 @@ int main()
 			playerTwo_Score++;
 		}
 
-		// TODO: Fix user input
 		string tempInput;
 		cout << "Press enter to continue";
-		cin >> tempInput;
+		cin.ignore();
+		cin.get();
 
 		if (playerOne_Score >= 2)
 			break;
