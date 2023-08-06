@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 #include "Cell.h"
 #include "Board.h"
 using namespace std;
@@ -74,6 +75,12 @@ void ticTacToePrinter() {
 
 }
 
+bool isInteger(const std::string& input) {
+	std::istringstream iss(input);
+	int value;
+	return (iss >> value) && iss.eof();
+}
+
 int main()
 {
 	int playerOne_Score = 0;
@@ -107,9 +114,19 @@ int main()
 				cout << "Player two's turn" << endl;
 			L1:
 			cout << "Choose a cell: ";
+			string userInput;
+			cin >> userInput;
 			int chosenCell = 0;
-			// TODO: Wrong Input Handling
-			cin >> chosenCell;
+
+			if (isInteger(userInput) && (stoi(userInput) >= 1 && stoi(userInput) <= 9)) {
+				chosenCell = stoi(userInput);
+			}
+			else {
+				cin.ignore();
+				cout << endl << "Please enter the correct input. ";
+				goto L1;
+
+			}
 
 			if (tempBoard.getSign(chosenCell - 1) != 'X' && tempBoard.getSign(chosenCell - 1) != 'O') {
 				if (currentPlayer == 1) {
