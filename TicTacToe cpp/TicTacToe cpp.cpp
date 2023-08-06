@@ -3,6 +3,10 @@
 #include "Board.h"
 using namespace std;
 
+
+
+
+
 bool winnerChecker(Board tempBoard) {
 	if (tempBoard.getSign(0, 0) == tempBoard.getSign(0, 1) &&
 		tempBoard.getSign(0, 0) == tempBoard.getSign(0, 2) && tempBoard.getSign(0, 0) != ' ')
@@ -48,7 +52,7 @@ int main()
 
 		Board tempBoard;
 		while (!winnerChecker(tempBoard)) {
-
+			// TODO: TicTacToe ASCII Art
 			system("cls");
 
 			cout << "Current Round: " << roundCount << endl;
@@ -69,6 +73,7 @@ int main()
 			cout << "Choose a cell: ";
 			int chosenCell = 0;
 			cin >> chosenCell;
+			// TODO: Duplicate input handling
 
 			if (currentPlayer == 1) {
 				if (chosenCell == 1)
