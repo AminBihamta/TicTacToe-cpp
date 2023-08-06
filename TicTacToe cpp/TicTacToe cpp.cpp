@@ -51,6 +51,28 @@ bool winnerChecker(Board tempBoard) {
 	return false;
 }
 
+void ticTacToePrinter() {
+	system("cls");
+
+	cout << R"(
+
+		 ________  __            ________                      ________                     
+		|        \|  \          |        \                    |        \                    
+		 \$$$$$$$$ \$$  _______  \$$$$$$$$  ______    _______  \$$$$$$$$  ______    ______  
+		   | $$   |  \ /       \   | $$    |      \  /       \   | $$    /      \  /      \ 
+		   | $$   | $$|  $$$$$$$   | $$     \$$$$$$\|  $$$$$$$   | $$   |  $$$$$$\|  $$$$$$\
+		   | $$   | $$| $$         | $$    /      $$| $$         | $$   | $$  | $$| $$    $$
+		   | $$   | $$| $$_____    | $$   |  $$$$$$$| $$_____    | $$   | $$__/ $$| $$$$$$$$
+		   | $$   | $$ \$$     \   | $$    \$$    $$ \$$     \   | $$    \$$    $$ \$$     \
+		    \$$    \$$  \$$$$$$$    \$$     \$$$$$$$  \$$$$$$$    \$$     \$$$$$$   \$$$$$$$
+		                                                                                    
+                                                                                    
+                                                                                    
+
+)";
+
+}
+
 int main()
 {
 	int playerOne_Score = 0;
@@ -65,8 +87,8 @@ int main()
 
 		Board tempBoard;
 		while (!winnerChecker(tempBoard)) {
-			// TODO: TicTacToe ASCII Art
-			system("cls");
+
+			ticTacToePrinter();
 
 			cout << "Current Round: " << roundCount << endl;
 			cout << "Player one's score: " << playerOne_Score << endl;
@@ -86,7 +108,6 @@ int main()
 			cout << "Choose a cell: ";
 			int chosenCell = 0;
 			cin >> chosenCell;
-			// TODO: Duplicate input handling
 
 			if (tempBoard.getSign(chosenCell - 1) != 'X' && tempBoard.getSign(chosenCell - 1) != 'O') {
 				if (currentPlayer == 1) {
@@ -114,6 +135,8 @@ int main()
 			cout << "Player 2 won" << endl << endl;
 			playerTwo_Score++;
 		}
+
+		// TODO: Fix user input
 		string tempInput;
 		cout << "Press enter to continue";
 		cin >> tempInput;
@@ -126,7 +149,7 @@ int main()
 		roundCount++;
 	}
 
-	system("cls");
+	ticTacToePrinter();
 
 	if (playerOne_Score >= 2)
 		cout << "Overall winner: player one";
