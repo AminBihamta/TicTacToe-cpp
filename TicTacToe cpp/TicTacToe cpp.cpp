@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <thread>
 #include "Cell.h"
 #include "Board.h"
 using namespace std;
@@ -156,9 +157,14 @@ int main()
 		}
 
 		string tempInput;
-		cout << "Press enter to continue";
+		cout << "Press enter to continue" << endl;
 		cin.ignore();
 		cin.get();
+
+		for (int i = 0; i < 3; i++) {
+			cout << " . ";
+			this_thread::sleep_for(chrono::milliseconds(500));
+		}
 
 		if (playerOne_Score >= 2)
 			break;
