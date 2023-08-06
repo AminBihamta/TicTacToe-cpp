@@ -8,32 +8,45 @@ using namespace std;
 
 
 bool winnerChecker(Board tempBoard) {
-	if (tempBoard.getSign(0, 0) == tempBoard.getSign(0, 1) &&
-		tempBoard.getSign(0, 0) == tempBoard.getSign(0, 2) && tempBoard.getSign(0, 0) != ' ')
-		return true;
-	else if (tempBoard.getSign(1, 0) == tempBoard.getSign(1, 1) &&
-		tempBoard.getSign(1, 0) == tempBoard.getSign(1, 2) && tempBoard.getSign(1, 0) != ' ')
-		return true;
-	else if (tempBoard.getSign(2, 0) == tempBoard.getSign(2, 1) &&
-		tempBoard.getSign(2, 0) == tempBoard.getSign(2, 2) && tempBoard.getSign(2, 0) != ' ')
-		return true;
 
-	else if (tempBoard.getSign(0, 0) == tempBoard.getSign(1, 0) &&
-		tempBoard.getSign(0, 0) == tempBoard.getSign(2, 0) && tempBoard.getSign(0, 0) != ' ')
-		return true;
-	else if (tempBoard.getSign(0, 1) == tempBoard.getSign(1, 1) &&
-		tempBoard.getSign(0, 1) == tempBoard.getSign(2, 1) && tempBoard.getSign(0, 1) != ' ')
-		return true;
-	else if (tempBoard.getSign(0, 2) == tempBoard.getSign(1, 2) &&
-		tempBoard.getSign(0, 2) == tempBoard.getSign(2, 2) && tempBoard.getSign(0, 2) != ' ')
-		return true;
+	int x = 0;
+	int y = 1;
+	int z = 2;
 
-	else if (tempBoard.getSign(0, 0) == tempBoard.getSign(1, 1) &&
-		tempBoard.getSign(0, 0) == tempBoard.getSign(2, 2) && tempBoard.getSign(0, 0) != ' ')
+	for (int i = 0; i < 3; i++) {
+		if (tempBoard.getSign(x) == tempBoard.getSign(y) && tempBoard.getSign(x) == tempBoard.getSign(z) && tempBoard.getSign(x) != ' ') {
+			return true;
+		}
+		else {
+			x += 3;
+			y += 3;
+			z += 3;
+		}
+	}
+
+	x = 0;
+	y = 3;
+	z = 6;
+
+
+	for (int i = 0; i < 3; i++) {
+		if (tempBoard.getSign(x) == tempBoard.getSign(y) && tempBoard.getSign(x) == tempBoard.getSign(z) && tempBoard.getSign(x) != ' ') {
+			return true;
+		}
+		else {
+			x++;
+			y++;
+			z++;
+		}
+	}
+
+	if (tempBoard.getSign(0) == tempBoard.getSign(4) && tempBoard.getSign(0) == tempBoard.getSign(8) && tempBoard.getSign(0) != ' ') {
 		return true;
-	else if (tempBoard.getSign(0, 2) == tempBoard.getSign(1, 1) &&
-		tempBoard.getSign(0, 2) == tempBoard.getSign(2, 0) && tempBoard.getSign(0, 2) != ' ')
+	}
+
+	if (tempBoard.getSign(2) == tempBoard.getSign(4) && tempBoard.getSign(2) == tempBoard.getSign(6) && tempBoard.getSign(2) != ' ') {
 		return true;
+	}
 
 	return false;
 }
@@ -61,62 +74,33 @@ int main()
 			cout << endl;
 
 
-			cout << "|" << tempBoard.getSign(0, 0) << "|" << tempBoard.getSign(0, 1) << "|" << tempBoard.getSign(0, 2) << "|" << endl;
-			cout << "|" << tempBoard.getSign(1, 0) << "|" << tempBoard.getSign(1, 1) << "|" << tempBoard.getSign(1, 2) << "|" << endl;
-			cout << "|" << tempBoard.getSign(2, 0) << "|" << tempBoard.getSign(2, 1) << "|" << tempBoard.getSign(2, 2) << "|" << endl;
+			cout << "|" << tempBoard.getSign(0) << "|" << tempBoard.getSign(1) << "|" << tempBoard.getSign(2) << "|" << endl;
+			cout << "|" << tempBoard.getSign(3) << "|" << tempBoard.getSign(4) << "|" << tempBoard.getSign(5) << "|" << endl;
+			cout << "|" << tempBoard.getSign(6) << "|" << tempBoard.getSign(7) << "|" << tempBoard.getSign(8) << "|" << endl;
 
 			if (currentPlayer == 1)
 				cout << "Player one's turn" << endl;
 			else
 				cout << "Player two's turn" << endl;
-
+			L1:
 			cout << "Choose a cell: ";
 			int chosenCell = 0;
 			cin >> chosenCell;
 			// TODO: Duplicate input handling
 
-			if (currentPlayer == 1) {
-				if (chosenCell == 1)
-					tempBoard.setSign(0, 0, playerOne_Sign);
-				else if (chosenCell == 2)
-					tempBoard.setSign(0, 1, playerOne_Sign);
-				else if (chosenCell == 3)
-					tempBoard.setSign(0, 2, playerOne_Sign);
-				else if (chosenCell == 4)
-					tempBoard.setSign(1, 0, playerOne_Sign);
-				else if (chosenCell == 5)
-					tempBoard.setSign(1, 1, playerOne_Sign);
-				else if (chosenCell == 6)
-					tempBoard.setSign(1, 2, playerOne_Sign);
-				else if (chosenCell == 7)
-					tempBoard.setSign(2, 0, playerOne_Sign);
-				else if (chosenCell == 8)
-					tempBoard.setSign(2, 1, playerOne_Sign);
-				else if (chosenCell == 9)
-					tempBoard.setSign(2, 2, playerOne_Sign);
-				currentPlayer = 2;
+			if (tempBoard.getSign(chosenCell - 1) != 'X' && tempBoard.getSign(chosenCell - 1) != 'O') {
+				if (currentPlayer == 1) {
+					tempBoard.setSign(chosenCell - 1, playerOne_Sign);
+					currentPlayer = 2;
+				}
+				else {
+					tempBoard.setSign(chosenCell - 1, playerTwo_Sign);
+					currentPlayer = 1;
+				}
 			}
 			else {
-				if (chosenCell == 1)
-					tempBoard.setSign(0, 0, playerTwo_Sign);
-				else if (chosenCell == 2)
-					tempBoard.setSign(0, 1, playerTwo_Sign);
-				else if (chosenCell == 3)
-					tempBoard.setSign(0, 2, playerTwo_Sign);
-				else if (chosenCell == 4)
-					tempBoard.setSign(1, 0, playerTwo_Sign);
-				else if (chosenCell == 5)
-					tempBoard.setSign(1, 1, playerTwo_Sign);
-				else if (chosenCell == 6)
-					tempBoard.setSign(1, 2, playerTwo_Sign);
-				else if (chosenCell == 7)
-					tempBoard.setSign(2, 0, playerTwo_Sign);
-				else if (chosenCell == 8)
-					tempBoard.setSign(2, 1, playerTwo_Sign);
-				else if (chosenCell == 9)
-					tempBoard.setSign(2, 2, playerTwo_Sign);
-				currentPlayer = 1;
-
+				cout << endl << "Cell already occupied. ";
+				goto L1;
 			}
 
 		}

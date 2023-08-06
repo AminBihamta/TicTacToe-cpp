@@ -3,12 +3,10 @@
 class Board : public Cell
 {
 private:
-	Cell cells[3][3];
+	Cell cells[9];
 public:
 	Board();
-	void setSign(int x, int y, char _sign);
-	char getSign(int x, int y) const;
-
-
+	void setSign(int index, char _sign);
+	char getSign(int index) const;
 };
 
